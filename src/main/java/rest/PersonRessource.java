@@ -12,7 +12,10 @@ import entities.Person;
 import errorhandling.ErrorRetrieving;
 import facades.FacadeExample;
 import facades.PersonFacade;
+import facades.FetchFacade;
+
 import facades.RemoteServerFacade;
+import java.io.IOException;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManagerFactory;
@@ -48,12 +51,14 @@ public class PersonRessource {
       
       
     }
-       @GET
+
+    
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("fillDB")
-    public String fillDB() throws ErrorRetrieving {
-      personFacade.fillUsersInDB();
-      return "filled db";    
+    @Path("abc")
+    public String fetch() throws IOException {
+        FetchFacade ff = new FetchFacade();
+        return GSON.toJson(ff.fetchData());    
       
       
     }
