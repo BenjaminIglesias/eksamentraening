@@ -146,7 +146,7 @@ public class RenameMeResourceTest {
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("count", equalTo(2));
     }
-    
+    @Disabled
      @Test
     public void testFilms() throws Exception {  
               login("user_admin", "test");
