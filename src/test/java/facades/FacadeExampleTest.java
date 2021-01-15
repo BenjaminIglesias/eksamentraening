@@ -44,8 +44,6 @@ public class FacadeExampleTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         try {
-            em.getTransaction().begin();
-            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
            
             em.getTransaction().commit();
               em.getTransaction().begin();
