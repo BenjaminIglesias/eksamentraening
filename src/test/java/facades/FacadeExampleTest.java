@@ -46,6 +46,15 @@ public class FacadeExampleTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Person.deleteAllRows").executeUpdate();
+           
+            em.getTransaction().commit();
+              em.getTransaction().begin();
+            //Delete existing users and roles to get a "fresh" database
+            em.createQuery("delete from Person").executeUpdate();
+            em.createQuery("delete from Address").executeUpdate();
+            em.createQuery("delete from PhoneNumber").executeUpdate();
+            em.createQuery("delete from Book").executeUpdate();
+           
             em.persist(new Person("person1","person1","person1"));
             em.persist(new Person("person2","person2","person2"));
 
