@@ -20,6 +20,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.TableGenerator;
 
 /**
  *
@@ -30,8 +31,10 @@ import javax.persistence.OneToOne;
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+ 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;

@@ -35,7 +35,7 @@ public class PersonRessourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/jpareststarter/api";
-    private static Person p1;
+    private static Person p1, p2;
     private static Address a1;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();

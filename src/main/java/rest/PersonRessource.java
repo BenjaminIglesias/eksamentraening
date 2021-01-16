@@ -79,7 +79,7 @@ public class PersonRessource {
     public String addPerson(String person) {
        
         PersonDTO p = GSON.fromJson(person, PersonDTO.class);
-       personFacade.createUser(new Person(p.getFirstName(),p.getLastName(),p.getBirthyear()));
+       personFacade.createUser(p.getFirstName(),p.getLastName(),p.getBirthyear());
         return (p.getFirstName() + " " + p.getLastName() + " Has Been Created"  );
 }
 
@@ -88,8 +88,8 @@ public class PersonRessource {
     @Path("update/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public void updatePerson(@PathParam("id") Long id, String person){
-    
+    public String updatePerson(@PathParam("id") Long id, String person){
+     return personFacade.editUserByID(GSON.fromJson(person, PersonDTO.class), id);
 }
    
     @DELETE

@@ -26,7 +26,13 @@ public class TestPlaceMain {
         PersonRessource pr = new  PersonRessource(); 
         
         FetchFacade ff = FetchFacade.getFetchFacade(emf);
-        System.out.println(pr.fetch());        
+          String payload = "{\n" +
+        "  \"firstName\": \"firstName\",\n" +
+        "  \"lastName\": \"lastName\",\n" +
+        "  \"birthyear\": \"1990\"\n" +
+        "}";
+   
+        System.out.println(pr.addPerson(payload));
     }}
    
      

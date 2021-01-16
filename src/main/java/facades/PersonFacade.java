@@ -68,8 +68,26 @@ public class PersonFacade implements IPersonFacade{
     }
 
     @Override
-    public String editUserByID(PersonDTO p) {
-     return null;    
+    public String editUserByID(PersonDTO p, long id) {
+               EntityManager em = getEntityManager();
+           Person pEdit =  em.find(Person.class, id);
+           
+           
+           if (p.getFirstName() != null){
+            pEdit.setFirstName(p.getFirstName());
+           }
+    if (p.getLastName()!= null){
+      pEdit.setLastName(p.getLastName());  
+  }
+  
+             if (p.getBirthyear()!= null){  
+              pEdit.setBirthyear(p.getBirthyear());
+             }
+             em.getTransaction().begin();
+             em.persist(pEdit);
+             em.getTransaction().commit();
+        
+        return p.getFirstName() + " " + p.getFirstName() + " Has been edited";    
     }
 
     @Override
@@ -86,14 +104,14 @@ public class PersonFacade implements IPersonFacade{
     }
 
     @Override
-    public PersonDTO createUser(Person p) {
+    public PersonDTO createUser(String firstName, String lastName, String birthyear) {
          EntityManager em = getEntityManager();
          em.getTransaction().begin();
          
-         em.persist(p);
+         em.persist(new Person(firstName,lastName,birthyear));
          
          em.getTransaction().commit();
-        return new PersonDTO(p);
+        return new PersonDTO(firstName,lastName,birthyear);
 
 
 

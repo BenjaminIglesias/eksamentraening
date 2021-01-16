@@ -20,9 +20,9 @@ public interface IPersonFacade {
   public List<PersonDTO> getUsers();  
   public PersonDTO getUserByID(int id);
   //post
-  public PersonDTO createUser(Person p);
+  public PersonDTO createUser(String firstName, String lastName, String birthyear);
   //put 
-    public String editUserByID(PersonDTO p);
+   public String editUserByID(PersonDTO p, long id);
   //delete
   public PersonDTO deleteUserByID(Long id);
 
